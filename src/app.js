@@ -47,6 +47,10 @@ resetBtn.addEventListener("click", function(){
 	pickedColor = pickColor();
 	//change color display to match picked color
 	colorDisplay.textContent = pickedColor;
+	//reset butn should only show msh "PlayAgain" after the winner won
+	this.textContent = "New Colors"
+	//hide message "Correct!"
+	messageDisplay.textContent = "";
 	//change colors of squares
 	for(let i = 0; i < squares.length; i++) {
 		squares[i].style.backgroundColor = colors[i];
