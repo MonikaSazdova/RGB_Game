@@ -11,11 +11,24 @@ let modeBtns = document.querySelectorAll(".mode");
 initialize();
 
 function initialize(){
-	//mode buttons event listeners (easy and hard)
-	setModeBtns();
+	setModeBtns(); 	//mode buttons event listeners (easy and hard)
+	setSquares();  //set squares listeners
+	reset();
+}
 
+function setModeBtns(){
+	for(let i = 0; i < modeBtns.length; i++){
+		modeBtns[i].addEventListener("click", function(){
+			modeBtns[0].classList.remove("selected");
+			modeBtns[1].classList.remove("selected");
+			this.classList.add("selected");
+			this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+			reset();
+		});
+	}
+}
 
-	//set squares listeners
+function setSquares(){
 	for(let i = 0; i < squares.length; i++){
 		//add click listeners to squares
 		squares[i].addEventListener("click", function(){
@@ -31,20 +44,6 @@ function initialize(){
 					this.style.backgroundColor = "#232323";
 					messageDisplay.textContent = "Try Again";
 				}
-		});
-	}
-
-	reset();
-}
-
-function setModeBtns(){
-	for(let i = 0; i < modeBtns.length; i++){
-		modeBtns[i].addEventListener("click", function(){
-			modeBtns[0].classList.remove("selected");
-			modeBtns[1].classList.remove("selected");
-			this.classList.add("selected");
-			this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
-			reset();
 		});
 	}
 }
